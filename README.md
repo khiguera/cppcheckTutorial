@@ -6,7 +6,12 @@ that everything discussed will work. This tutorial was written mainly for Linux 
 are using.
 
 (TL;DR)
+=========
+Cppcheck is pretty handy to find bugs that are not commonly checked for, but as a result it does not check
+for the common bugs. Use this tool with another analysis tool or debugging program to debug a lot easier.
 
+Quick Info
+==========
 Cppcheck is a static code analysis tool for the C and C++ programming 
 languages. It is a versatile tool that can check non-standard code. The 
 creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and 
