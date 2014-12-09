@@ -149,7 +149,7 @@ with commas, e.g. --enable=style,unusedFunction.
 
 	Suppress warnings listed in the file. Each suppression is in the format of <spec> above.
 
---template \'\<text\>\'
+--template '\<text\>'
 
 	Format the error messages. E.g. '{file}:{line},{severity},{id},{message}' or '{file}({line}):(
 	{severity}) {message}'. Pre-defined templates: gcc, vs
