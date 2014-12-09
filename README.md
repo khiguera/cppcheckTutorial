@@ -67,9 +67,11 @@ Optional arguments
 
 	unusedFunction
 
-		Check for unused functions. (This is pretty useful to clean up the source code. No one 
-		wants to look at your code and be confused why there is a function that isn't used.
-		The cleaner the code, the easier it is to understand and fix later if need be).
+		Check for unused functions. (This is pretty useful to clean up the source code.
+		These funcitons may cause little gremlins later when trying to debug. 
+		From experience, I have tried to fix bugs but tried fixing it by making
+		changes to a function that is no longer been used. Three hours later, it was
+		finally pointed out to me what I was doing...).
 	
 	missingInclude
 
