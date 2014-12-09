@@ -37,7 +37,7 @@ Mac:
 Optional arguments
 ====================
 
---append=<file>
+--append=\<file\>
 
 	This allows you to provide information about functions by providing an implementation for these.
 
