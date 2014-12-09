@@ -17,7 +17,7 @@ HOW TO INSTALL
 Windows: 
 	In order to install for Windows, it must be downloaded from their
 	website which can be found at http://cppcheck.sourceforge.net/
-	After downloading, run the .msi file, and it should install automatically.
+	After downloading, run the .msi file and it should install automatically.
 
 Linux:
 	In order to install for Linux you can simply run the following command:
