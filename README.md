@@ -15,5 +15,5 @@ Cppcheck is free software under the GNU General Public License.
 HOW TO INSTALL
 ==================
 Windows: 
-	In order to isntall for Windows, it must be downloaded from their
+	In order to install for Windows, it must be downloaded from their
 	website which can be found at http://cppcheck.sourceforge.net/
