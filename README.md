@@ -2,6 +2,7 @@ cppcheckTutorial
 ================
 
 (TL;DR)
+
 Cppcheck is a static code analysis tool for the C and C++ programming 
 languages. It is a versatile tool that can check non-standard code. The 
 creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and 
@@ -28,4 +29,6 @@ sudo apt-get install cppcheck
 ```
 
 Mac:
-	In order to install for Mac,
+	We were not able to figure out how to install onto Mac, We would recommend to either ssh
+	into a server that can use it or to explore the wonders that is the internet and figure it
+	out. If you do, you are more than welcome to contriubte that to this project.
