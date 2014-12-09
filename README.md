@@ -1,6 +1,10 @@
 cppcheckTutorial
 ================
 
+As a heads up, if you are here trying to figure out how to use this tool for Windows, we can not be sure
+that everything discussed will work. This tutorial was written mainly for Linux users as that is what we 
+are using.
+
 (TL;DR)
 
 Cppcheck is a static code analysis tool for the C and C++ programming 
