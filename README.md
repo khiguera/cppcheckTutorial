@@ -3,7 +3,7 @@ cppcheckTutorial
 
 Cppcheck is a static code analysis tool for the C and C++ programming 
 languages. It is a versatile tool that can check non-standard code.[1] The 
-creator and lead developer is Daniel Marjamäki.Unlike C/C++ compilers and 
+creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and 
 many other analysis tools it does not detect syntax errors in the code. 
 Cppcheck primarily detects the types of bugs that the compilers normally do
 not detect. 
