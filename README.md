@@ -67,7 +67,8 @@ Optional arguments
 
 	unusedFunction
 
-		Check for unused functions. (This is pretty useful to clean up the source code.
+		Check for unused functions. 
+		(This is pretty useful to clean up the source code.
 		These funcitons may cause little gremlins later when trying to debug. 
 		From experience, I have tried to fix bugs but tried fixing it by making
 		changes to a function that is no longer been used. Three hours later, it was
