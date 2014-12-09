@@ -52,6 +52,7 @@ Optional arguments
 	all
 
 		Enable all checks
+
 	style
 
 		Check coding style
