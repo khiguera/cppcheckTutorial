@@ -41,12 +41,12 @@ Optional arguments
 
 	This allows you to provide information about functions by providing an implementation for these.
 
--D<id>
+-D\<id\>
 
 	By default Cppcheck checks all configurations. Use -D to limit the checking. When -D is used the 
 	checking is limited to the given configuration. Example: -DDEBUG=1 -D__cplusplus
 
---enable=<id>
+--enable=\<id\>
 	Enable additional checks. The available ids are:
 
 	all
@@ -71,7 +71,7 @@ Optional arguments
 By default none of the additional checks are enabled. Several ids can be given if you separate them 
 with commas, e.g. --enable=style,unusedFunction.
 
---error-exitcode=<n>
+--error-exitcode=\<n\>
 
 	If errors are found, integer <n> is returned instead of default 0. EXIT_FAILURE is returned 
 	if arguments are not valid or if no input files are provided. Note that your operating 
@@ -81,11 +81,11 @@ with commas, e.g. --enable=style,unusedFunction.
 
 	Print a list of all possible error messages in XML format.
 
---exitcode-suppressions=<file>
+--exitcode-suppressions=\<file\>
 
 	Used when certain messages should be displayed but should not cause a non-zero exitcode.
 
---file-list=<file>
+--file-list=\<file\>
 
 	Specify the files to check in a text file. One filename per line.
 
@@ -98,12 +98,12 @@ with commas, e.g. --enable=style,unusedFunction.
 
 	Print help text.
 
--I <dir>
+-I \<dir\>
 
 	Give include path. Give several -I parameters to give several paths. First given path is checked 
 	first. If paths are relative to source files, this is not needed.
 
--i <dir>
+-i \<dir\>
 
 	Give path to ignore. Give several -i parameters to ignore several paths. Give directory name or 
 	filename with path as parameter. Directory name is matched to all parts of the path.
@@ -113,7 +113,7 @@ with commas, e.g. --enable=style,unusedFunction.
 	Enable inline suppressions. Use them by placing comments in the form: 
 	// cppcheck-suppress memleak before the line to suppress.
 
--j <jobs>
+-j \<jobs\>
 
 	Start <jobs> threads to do the checking work.
 
@@ -125,12 +125,12 @@ with commas, e.g. --enable=style,unusedFunction.
 
 	Report progress when checking a file.
 
---rule=<rule>
+--rule=\<rule\>
 
 	Match regular expression to create your own checks. E.g. rule "/ 0" can be used to check 
 	division by zero.
 
---rule-file=<file>
+--rule-file=\<file\>
 
 	Use given rule XML file. See https://sourceforge.net/projects/cppcheck/files/Articles/ for more 
 	info about the syntax.
@@ -139,17 +139,17 @@ with commas, e.g. --enable=style,unusedFunction.
 
 	Deprecated, use --enable=style
 
---suppress=<spec>
+--suppress=\<spec\>
 
 	Suppress a specific warning. The format of <spec> is: [error id]:[filename]:[line]. The 
 	[filename] and [line] are optional. [error id] may be * to suppress all warnings (for a 
 	specified file or files). [filename] may contain the wildcard characters * or ?.
 
---suppressions-list=<file>
+--suppressions-list=\<file\>
 
 	Suppress warnings listed in the file. Each suppression is in the format of <spec> above.
 
---template '<text>'
+--template \'\<text\>\'
 
 	Format the error messages. E.g. '{file}:{line},{severity},{id},{message}' or '{file}({line}):(
 	{severity}) {message}'. Pre-defined templates: gcc, vs
@@ -166,6 +166,6 @@ with commas, e.g. --enable=style,unusedFunction.
 
 	Write results in XML to error stream
 
---xml-version=<version>
+--xml-version=\<version\>
 
 	Select the XML file version. Currently versions 1 and 2 are available. The default version is 1.
