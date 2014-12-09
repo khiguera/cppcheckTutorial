@@ -67,11 +67,13 @@ Optional arguments
 
 	unusedFunction
 
-		Check for unused functions
+		Check for unused functions. (This is pretty useful to clean up the source code. No one 
+		wants to look at your code and be confused why there is a function that isn't used.
+		The cleaner the code, the easier it is to understand and fix later if need be).
 	
 	missingInclude
 
-		Check for missing includes
+		Check for missing include statements.
 
 By default none of the additional checks are enabled. Several ids can be given if you separate them 
 with commas, e.g. --enable=style,unusedFunction.
