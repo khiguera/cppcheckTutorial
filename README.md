@@ -21,9 +21,10 @@ Windows:
 
 Linux:
 	In order to install for Liux you can simply run the following command:
-	```
-	sudo apt-get install cppcheck
-	```
+
+```
+sudo apt-get install cppcheck
+```
 
 Mac:
 	In order to install for Mac,
