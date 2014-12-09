@@ -20,7 +20,7 @@ Windows:
 	After downloading, run the .msi file, and it should install automatically.
 
 Linux:
-	In order to install for Liux you can simply run the following command:
+	In order to install for Linux you can simply run the following command:
 
 ```
 sudo apt-get install cppcheck
