@@ -184,3 +184,39 @@ with commas, e.g. --enable=style,unusedFunction.
 --xml-version=\<version\>
 
 	Select the XML file version. Currently versions 1 and 2 are available. The default version is 1.
+
+
+How To Use cppcheck
+===================
+
+```
+int main()
+{
+	char a[10];
+	a[10] = 0;
+
+	return 0;
+}
+```
+
+In the above code, the glaring error is the out of bounds assignment into the char array a.
+Now to compile with nothing but the basic cppcheck commands, `cppcheck <filename>` is called in the command line
+prompt.
+
+The returned error from cppcheck is as follows:
+
+```
+Checking badcode.cpp...
+[badcode.cpp:10]: (error) Array 'a[10]' accessed at index 10, which is out of bounds.
+```
+
+Simply what this error states is that there is an assignment accessed at an out of bounds index. This is just one
+method of using cppcheck to check your code for errors the compiler will not check at compile time.
+
+Given the specific flags such as the `--enable=<id>` flag, you can test your code for a larger variety of errors.
+
+
+Limits of cppcheck
+==================
+
+
