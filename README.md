@@ -197,7 +197,6 @@ int main()
 
 	return 0;
 }
-
 ```
 
 In the above code, the glaring error is the out of bounds assignment into the char array a.
