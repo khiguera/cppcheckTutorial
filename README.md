@@ -215,8 +215,39 @@ method of using cppcheck to check your code for errors the compiler will not che
 
 Given the specific flags such as the `--enable=<id>` flag, you can test your code for a larger variety of errors.
 
+Users should also configure cppcheck before diving into the program so that the checker will check the things the
+user wants it to check. 
+
+Given the configuration and usage syntax of:
+```
+cppcheck [--append=<file>] [-D<id>] [--enable=<id>] [--error-exitcode=<n>] [--errorlist] [--exitcode-suppressions=<file>] [--file-list=<file>] [--force] [--help] [-I<dir>] [-i<dir>] [--inline-suppr] [-j<jobs>] [--quiet] [--report-progress] [--rule=<rule>] [--rule-file=<file>] [--style] [--suppress=<spec>] [--suppressions-list=<file>] [--template '<text>'] [--verbose] [--version] [--xml] [--xml-version=<version>]] [file or path] ...
+```
+the end user can customize the way the program functions in a number of ways such as error suppression or batch
+processing a directory of files.
+
+
+##Using cppcheck With Other Programs
+
+cppcheck can be configured to work with a number of development tools and is included in tools such as:
+	* Code::Blocks
+	* CodeDX
+	* CodeLite
+	* CppDepend 5
+and can be installed as a package in tools such as:
+	* Eclipse ([Cppcheclipse](http://cppcheclipse.googlecode.com/))
+	* gedit ([plugin](http://github.com/odamite/gedit-cppcheck))
+	* Hudsons ([plugin](http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin))
+	* Jenkins ([plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin))
+	* Visual Studios ([plugin](https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest))
+
 
 Limits of cppcheck
 ==================
+
+Some limits of cppcheck include user ignorance and lack of knowledge. Ok, joking aside, the use of cppcheck is to
+limit the amount of false positive errors given by other compilers and checkers. What this means is with general
+usage, cppcheck will not check much but what it does check, it checks extremely well. Similar to a crafting NPC in
+a game, cppcheck will tell you only what it can tell you forsure. Given the right ingredients, or in cppcheck's
+case, configurations and flags, it will give you errors that are almost guaranteed to be errors.
 
 
