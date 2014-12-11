@@ -245,9 +245,22 @@ and can be installed as a package in tools such as:
 * Jenkins ([plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin))
 * Visual Studios ([plugin](https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest))
 
+the above are not the only programs with cppcheck integration but only a small portion.
 
-Limits of cppcheck
-==================
+
+What cppcheck can and can't do
+=============================
+##Capabilites of cppcheck
+
+* out of bounds error check
+* class code checks
+* code exception checking
+* memory leak checking to a certain extent
+* obselete function usage warning
+* invalid usage of STL
+* usage of uninitialized variables and unused functions
+
+##Limits of cppcheck
 
 Some limits of cppcheck include user ignorance and lack of knowledge. Ok, joking aside, the use of cppcheck is to
 limit the amount of false positive errors given by other compilers and checkers. What this means is with general
@@ -255,4 +268,7 @@ usage, cppcheck will not check much but what it does check, it checks extremely 
 a game, cppcheck will tell you only what it can tell you forsure. Given the right ingredients, or in cppcheck's
 case, configurations and flags, it will give you errors that are almost guaranteed to be errors.
 
+cppcheck works in a way where it trues to avoid false positives so many of the bugs listed will be actual bugs.
+this being said, there will be many things that cppcheck will not catch such as stylistic errors and bugs.
 
+tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug program.
