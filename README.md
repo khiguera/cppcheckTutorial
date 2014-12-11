@@ -269,6 +269,6 @@ a game, cppcheck will tell you only what it can tell you forsure. Given the righ
 case, configurations and flags, it will give you errors that are almost guaranteed to be errors.
 
 cppcheck works in a way where it trues to avoid false positives so many of the bugs listed will be actual bugs.
-this being said, there will be many things that cppcheck will not catch such as stylistic errors and bugs.
+this being said, there will be many things that cppcheck will not catch such as stylistic errors and syntax bugs.
 
-tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug program.
+tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug your programs.
