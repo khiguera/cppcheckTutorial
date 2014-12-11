@@ -229,16 +229,16 @@ processing a directory of files.
 ##Using cppcheck With Other Programs
 
 cppcheck can be configured to work with a number of development tools and is included in tools such as:
-	* Code::Blocks
-	* CodeDX
-	* CodeLite
-	* CppDepend 5
+* Code::Blocks
+* CodeDX
+* CodeLite
+* CppDepend 5
 and can be installed as a package in tools such as:
-	* Eclipse ([Cppcheclipse](http://cppcheclipse.googlecode.com/))
-	* gedit ([plugin](http://github.com/odamite/gedit-cppcheck))
-	* Hudsons ([plugin](http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin))
-	* Jenkins ([plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin))
-	* Visual Studios ([plugin](https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest))
+* Eclipse ([Cppcheclipse](http://cppcheclipse.googlecode.com/))
+* gedit ([plugin](http://github.com/odamite/gedit-cppcheck))
+* Hudsons ([plugin](http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin))
+* Jenkins ([plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin))
+* Visual Studios ([plugin](https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest))
 
 
 Limits of cppcheck
