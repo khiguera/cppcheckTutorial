@@ -5,20 +5,16 @@ As a heads up, if you are here trying to figure out how to use this tool for Win
 that everything discussed will work. This tutorial was written mainly for Linux users as that is what we 
 are using.
 
-(TL;DR)
-=========
-Cppcheck is pretty handy to find bugs that are not commonly checked for, but as a result it does not check
-for the common bugs. Use this tool with another analysis tool or debugging program to debug a lot easier.
 
 Quick Info
 ==========
-Cppcheck is a static code analysis tool for the C and C++ programming 
+Cppcheck is a static code analysis tool for the C/C++ programming 
 languages. It is a versatile tool that can check non-standard code. The 
 creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and 
 many other analysis tools it does not detect syntax errors in the code. 
 Cppcheck primarily detects the types of bugs that the compilers normally do
 not detect. 
-The goal is to detect only real errors in the code (i.e. have zero false positives).
+The goal is to detect only real errors in the code. 
 
 Cppcheck is free software under the GNU General Public License.
 
@@ -113,24 +109,10 @@ with commas, e.g. --enable=style,unusedFunction.
 
 	Print help text.
 
--I \<dir\>
-
-	Give include path. Give several -I parameters to give several paths. First given path is checked 
-	first. If paths are relative to source files, this is not needed.
-
--i \<dir\>
-
-	Give path to ignore. Give several -i parameters to ignore several paths. Give directory name or 
-	filename with path as parameter. Directory name is matched to all parts of the path.
-
 --inline-suppr
 
 	Enable inline suppressions. Use them by placing comments in the form: 
 	// cppcheck-suppress memleak before the line to suppress.
-
--j \<jobs\>
-
-	Start <jobs> threads to do the checking work.
 
 -q, --quiet
 
@@ -150,9 +132,6 @@ with commas, e.g. --enable=style,unusedFunction.
 	Use given rule XML file. See https://sourceforge.net/projects/cppcheck/files/Articles/ for more 
 	info about the syntax.
 
--s, --style
-
-	Deprecated, use --enable=style
 
 --suppress=\<spec\>
 
@@ -162,32 +141,21 @@ with commas, e.g. --enable=style,unusedFunction.
 
 --suppressions-list=\<file\>
 
-	Suppress warnings listed in the file. Each suppression is in the format of <spec> above.
-
---template '\<text\>'
-
-	Format the error messages. E.g. '{file}:{line},{severity},{id},{message}' or '{file}({line}):(
-	{severity}) {message}'. Pre-defined templates: gcc, vs
+	Suppress warnings listed in an included file. Each suppression is in the format of <spec> above.
 
 -v, --verbose
 
 	More detailed error reports
 
---version
-
-	Print out version information
-
 --xml
 
 	Write results in XML to error stream
 
---xml-version=\<version\>
-
-	Select the XML file version. Currently versions 1 and 2 are available. The default version is 1.
-
 
 How To Use cppcheck
 ===================
+
+There are more code examples provided in the example files.
 
 ```
 int main()

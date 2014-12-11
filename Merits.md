@@ -57,4 +57,5 @@ Overall feelings
 =================
 In the end, the static analysis field is giant and one static debugger cannot cover it. Use other static
 and dynamic debuggers to help find bugs where cppcheck does not. And with each update cppcheck has, it 
-has the potential of being even better.
+has the potential of being even better. For instance, with the latest update, the update notes state that it can now 
+find unused return values.
