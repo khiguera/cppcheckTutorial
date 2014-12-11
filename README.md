@@ -233,6 +233,7 @@ cppcheck can be configured to work with a number of development tools and is inc
 * CodeDX
 * CodeLite
 * CppDepend 5
+
 and can be installed as a package in tools such as:
 * Eclipse ([Cppcheclipse](http://cppcheclipse.googlecode.com/))
 * gedit ([plugin](http://github.com/odamite/gedit-cppcheck))
