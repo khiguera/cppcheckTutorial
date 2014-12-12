@@ -403,3 +403,4 @@ Checking badcode.cpp...
 ```
 ####Why?
 The memory leak occurs when pointer 'a' goes out of scope.
+..
