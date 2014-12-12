@@ -268,6 +268,13 @@ Checking badcode.cpp...
 [badcode.cpp:9]: (style) The scope of the variable 'i' can be reduced.
 [badcode.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
 ```
+####Why?
+In this example, we see some stylistic problems with this code. 
+While it may not cause any problems in the program, it is good practice to not have unnecessary code.
+Although, cppcheck does not normally display these style isses.
+In order to display the style issues, we run the command `--enable=style`.
+At the same time, enabling style will also enable warning, performance, and portability issues.
+
 <a name="uselessfunction"></a>
 ##Useless/Unused Function Checking
 ```
@@ -305,6 +312,12 @@ Checking badcode.cpp...
 Checking usage of global functions..
 [badcode.cpp:7]: (style) The function 'greaterThanZero' is never used.
 ```
+####Why?
+Because you derped and wrote a function when it wasn't even needed. Sheesh what a waste of time.
+Ok, fine here we added the main function.
+We still get the same as errors for not using variables i, but now we also get errors for an unused function `greaterThanZero`.
+_l2Code_
+
 <a name="memoryhole"></a>
 ##Memory Leaks
 ```
@@ -360,3 +373,5 @@ $ cppcheck badcode.cpp
 Checking badcode.cpp...
 [badcode.cpp:29]: (error) Resource leak: f
 ```
+####Why?
+You need to fclose the file that you have fopened earlier in the function, or otherwise you leak the resources allocated and pointed at by the FILE*.
