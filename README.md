@@ -461,8 +461,8 @@ $ cppcheck overflow.cpp
 Checking overflow.cpp...
 $
 ```
-###Seems normal to me
-One other bug that cppcheck does not check for is overflow..
+###Seems normal to me!
+One other bug that cppcheck does not check for is overflow.
 If we run this code, it would only print out "Hello World!" once. Why does this happen? It's because when you add 1 to the max value of a 32 bit integer it overflows.
 The integer y would become -2,147,483,648 after adding 1 to y. This stops the for loop because of the condition that y must be greater than 0. 
 Cppcheck did not account for this bug which could be potentially disastrous to anyone's code. Using the visual studios static debugger could help here. 
