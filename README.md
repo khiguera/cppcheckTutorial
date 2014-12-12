@@ -403,12 +403,16 @@ Checking badcode.cpp...
 ```
 ####Why?
 The memory leak occurs when pointer 'a' goes out of scope.
+
+
 Bugs that cppcheck does not find
 ====================================
 ##Unused function return value
 ```
 #include<iostream>
+
 using namespace std;
+
 int TestReturn(int &x, int &y)
 {
     x = 10;
@@ -425,6 +429,7 @@ int main()
     cout << b << " " << a << endl;
 }
 ```
+
 cppcheck returns:
 ```
 $ cppcheck Sneakycode.cpp
