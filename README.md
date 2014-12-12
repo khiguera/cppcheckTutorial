@@ -438,7 +438,31 @@ $
 ```
 ####Why didn't it catch the bug?
 So far cppcheck does not check for these stylistic bugs. If you run this code the variables a and b change but what happens to the return statement in the TestReturn function? 
-The return statement is essentially useless as it is discarded. This is what we call an used function return value.
+The return statement is essentially useless as it is discarded. This is what we call an unused function return value.
 Cppcheck does not find these bugs because it's a stylistic issue. If we wanted to make a function that just changed the variable names, we would've just used a void function. 
 Cppcheck focuses on the bugs that matter and not stylistic issues. Using another static debugger would be useful here.
-
+##Overflow
+```
+#include<iostream>
+using namespace std;
+int main()
+{
+	int i = 2147483647;
+	for (int y = i;y > 0;y++)
+	{
+		cout << "Hello World!";
+	}
+return 0;
+}
+```
+cppcheck returns:
+```
+$ cppcheck overflow.cpp
+Checking overflow.cpp...
+$
+```
+###Seems normal to me
+One other bug that cppcheck does not check for is overflow..
+If we run this code, it would only print out "Hello World!" once. Why does this happen? It's because when you add 1 to the max value of a 32 bit integer it overflows.
+The integer y would become -2,147,483,648 after adding 1 to y. This stops the for loop because of the condition that y must be greater than 0. 
+Cppcheck did not account for this bug which could be potentially disastrous to anyone's code. Using the visual studios static debugger could help here. 
