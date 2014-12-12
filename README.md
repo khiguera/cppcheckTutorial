@@ -226,7 +226,7 @@ What cppcheck can and can't do
 * out of bounds error check as seen [above](#outofbounds)
 * class code checks
 * code exception checking
-* memory leak checking to a certain extent
+* [memory leak checking](#memoryhole) to a certain extent
 * obselete function usage warning
 * invalid usage of STL
 * usage of [uninitialized variables](#randomvariable) and [unused functions](#uselessfunction)
@@ -268,7 +268,6 @@ Checking badcode.cpp...
 [badcode.cpp:9]: (style) The scope of the variable 'i' can be reduced.
 [badcode.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
 ```
-
 <a name="uselessfunction"></a>
 ##Useless/Unused Function Checking
 ```
@@ -296,7 +295,7 @@ int main()
 }
 ```
 
-cppcheck return:
+cppcheck returns:
 ```
 $ cppcheck --enable=all badcode.cpp
 Checking badcode.cpp...
@@ -305,5 +304,59 @@ Checking badcode.cpp...
 [badcode.cpp:24]: (style) Variable 'a' is assigned a value that is never used.
 Checking usage of global functions..
 [badcode.cpp:7]: (style) The function 'greaterThanZero' is never used.
-(information) Cppcheck cannot find all the include files (use --check-config for details)
+```
+<a name="memoryhole"></a>
+##Memory Leaks
+```
+#include <iostream>
+#include <stdlib.h>
+#include <iostd.h>
+
+using namespace std;
+
+enum bus_type
+{
+	MEDIA_BUS_UNKNOWN,
+	MEDIA_BUS_VIRTUAL,
+	MEDIA_BUS_PCI,
+	MEDIA_BUS_USB,
+};
+
+static enum bus_type get_bus(char *device)
+{
+	char file[PATH_MAX];
+	char s[1024];
+	FILE *f;
+
+	if (!strcmp(device, "/sys/devices/virtual"))
+		return MEDIA_BUS_VIRTUAL;
+
+	snprintf(file, PATH_MAX, "%s/modalias", device);
+	f = fopen(file, "r");
+	if (!f)
+		return MEDIA_BUS_UNKNOWN;
+	if (!fgets(s, sizeof(s), f))       /* <-- (error) Resource leak: f */
+		return MEDIA_BUS_UNKNOWN;
+	fclose(f);
+
+	if (!strncmp(s, "pci", 3))
+		return MEDIA_BUS_PCI;
+	if (!strncmp(s, "usb", 3))
+		return MEDIA_BUS_USB;
+
+	return MEDIA_BUS_UNKNOWN;
+}
+
+int main()
+{
+	return 0;
+}
+
+```
+
+cppcheck returns:
+```
+$ cppcheck badcode.cpp
+Checking badcode.cpp...
+[badcode.cpp:29]: (error) Resource leak: f
 ```
