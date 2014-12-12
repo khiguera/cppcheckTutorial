@@ -160,6 +160,7 @@ How To Use cppcheck
 
 There are more code examples provided in the example files.
 
+<a name="outofbounds"></a>
 ```
 int main()
 {
@@ -222,13 +223,13 @@ What cppcheck can and can't do
 =============================
 ##Capabilites of cppcheck
 
-* out of bounds error check
+* out of bounds error check as seen [above](#outofbounds)
 * class code checks
 * code exception checking
 * memory leak checking to a certain extent
 * obselete function usage warning
 * invalid usage of STL
-* usage of uninitialized variables and unused functions
+* usage of [uninitialized variables](#randomvariable) and [unused functions](#uselessfunction)
 
 ##Limits of cppcheck
 
@@ -242,3 +243,67 @@ cppcheck works in a way where it trues to avoid false positives so many of the b
 this being said, there will be many things that cppcheck will not catch such as stylistic errors and syntax bugs.
 
 tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug your programs.
+
+
+cppcheck Examples
+=================
+<a name="randomvariable"></a>
+##Useless/Unused Variable Checking
+```
+int foo(int x)
+{
+	int i;
+	if(x > 0 )
+	{
+		std::cout << "X is greater than 0." << std::endl;
+		i = 1;
+	}
+}
+```
+
+cppcheck returns:
+```
+$ cppcheck --enable=style badcode.cpp
+Checking badcode.cpp...
+[badcode.cpp:9]: (style) The scope of the variable 'i' can be reduced.
+[badcode.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
+```
+
+<a name="uselessfunction"></a>
+##Useless/Unused Function Checking
+```
+void greaterThanZero(int x)
+{
+	int i;
+	if(x > 0 )
+	{
+		std::cout << "X is greater than 0." << std::endl;
+		i = 1;
+	}
+}
+
+int foo(int x, int y)
+{
+	return x + y;
+}
+
+int main()
+{
+	int a = 1, b = 2;
+	foo(,b);
+
+	return 0;
+}
+```
+
+cppcheck return:
+```
+$ cppcheck --enable=all badcode.cpp
+Checking badcode.cpp...
+[badcode.cpp:9]: (style) The scope of the variable 'i' can be reduced.
+[badcode.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
+[badcode.cpp:24]: (style) Variable 'a' is assigned a value that is never used.
+Checking usage of global functions..
+[badcode.cpp:7]: (style) The function 'greaterThanZero' is never used.
+(information) Cppcheck cannot find all the include files (use --check-config for details)
+```
