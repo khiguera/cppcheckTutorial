@@ -160,6 +160,7 @@ How To Use cppcheck
 
 There are more code examples provided in the example files.
 
+<a name="outofbounds"></a>
 ```
 int main()
 {
@@ -222,7 +223,7 @@ What cppcheck can and can't do
 =============================
 ##Capabilites of cppcheck
 
-* out of bounds error check
+* out of bounds error check as seen [above](#outofbounds)
 * class code checks
 * code exception checking
 * memory leak checking to a certain extent
