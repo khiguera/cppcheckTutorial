@@ -424,9 +424,9 @@ int main()
     TestReturn(a,b);
     cout << b << " " << a << endl;
 }
+```
 cppcheck returns:
 ```
-<<<<<<< HEAD
 $ cppcheck Sneakycode.cpp
 Checking Sneakycode.cpp...
 $
