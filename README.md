@@ -268,7 +268,6 @@ Checking badcode.cpp...
 [badcode.cpp:9]: (style) The scope of the variable 'i' can be reduced.
 [badcode.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
 ```
-
 <a name="uselessfunction"></a>
 ##Useless/Unused Function Checking
 ```
@@ -296,7 +295,7 @@ int main()
 }
 ```
 
-cppcheck return:
+cppcheck returns:
 ```
 $ cppcheck --enable=all badcode.cpp
 Checking badcode.cpp...
@@ -307,3 +306,5 @@ Checking usage of global functions..
 [badcode.cpp:7]: (style) The function 'greaterThanZero' is never used.
 (information) Cppcheck cannot find all the include files (use --check-config for details)
 ```
+
+
