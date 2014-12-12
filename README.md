@@ -7,6 +7,7 @@ This tutorial was written mainly for Linux users as that is what we are using.
 
 Quick Info
 ==========
+
 Cppcheck is a static code analysis tool for the C/C++ programming languages. It is a versatile tool that can check non-standard code. 
 The creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and many other analysis tools it does not detect syntax errors in the code. 
 Cppcheck primarily detects the types of bugs that the compilers normally do not detect. 
@@ -17,6 +18,7 @@ Cppcheck is free software under the GPL http://www.gnu.org/copyleft/gpl.html .
 
 HOW TO INSTALL
 ==================
+
 Windows: 
 	In order to install for Windows, it must be downloaded from their website which can be found at http://cppcheck.sourceforge.net/
 	After downloading, run the .msi file and it should install automatically.
@@ -240,9 +242,9 @@ Similar to a crafting NPC in a game, cppcheck will tell you only what it can tel
 Given the right ingredients, or in cppcheck's case, configurations and flags, it will give you errors that are almost guaranteed to be errors.
 
 cppcheck works in a way where it trues to avoid false positives so many of the bugs listed will be actual bugs.
-this being said, there will be many things that cppcheck will not catch such as stylistic errors and syntax bugs.
+this being said, there will be many things that cppcheck will not catch such as [stylistic errors](#styleuse), syntax, and [runtime](#overflowing) bugs.
 
-tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug your programs.
+*tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug your programs.*
 
 
 cppcheck Examples
@@ -407,6 +409,7 @@ The memory leak occurs when pointer 'a' goes out of scope.
 
 Bugs that cppcheck does not find
 ====================================
+<a name="styleuse"></a>
 ##Unused function return value
 ```
 #include<iostream>
@@ -437,10 +440,16 @@ Checking Sneakycode.cpp...
 $
 ```
 ####Why didn't it catch the bug?
-So far cppcheck does not check for these stylistic bugs. If you run this code the variables a and b change but what happens to the return statement in the TestReturn function? 
-The return statement is essentially useless as it is discarded. This is what we call an unused function return value.
-Cppcheck does not find these bugs because it's a stylistic issue. If we wanted to make a function that just changed the variable names, we would've just used a void function. 
-Cppcheck focuses on the bugs that matter and not stylistic issues. Using another static debugger would be useful here.
+So far cppcheck does not check for these stylistic bugs.
+If you run this code the variables a and b change but what happens to the return statement in the TestReturn function? 
+The return statement is essentially useless as it is discarded.
+This is what we call an unused function return value.
+Cppcheck does not find these bugs because it's a stylistic issue.
+If we wanted to make a function that just changed the variable names, we would've just used a void function. 
+Cppcheck focuses on the bugs that matter and not stylistic issues.
+Using another static debugger would be useful here.
+
+<a name="overflowing"></a>
 ##Overflow
 ```
 #include<iostream>
@@ -455,6 +464,7 @@ int main()
 return 0;
 }
 ```
+
 cppcheck returns:
 ```
 $ cppcheck overflow.cpp
@@ -463,6 +473,10 @@ $
 ```
 ###Seems normal to me!
 One other bug that cppcheck does not check for is overflow.
-If we run this code, it would only print out "Hello World!" once. Why does this happen? It's because when you add 1 to the max value of a 32 bit integer it overflows.
-The integer y would become -2,147,483,648 after adding 1 to y. This stops the for loop because of the condition that y must be greater than 0. 
-Cppcheck did not account for this bug which could be potentially disastrous to anyone's code. Using the visual studios static debugger could help here. 
+If we run this code, it would only print out "Hello World!" once.
+Why does this happen?
+It's because when you add 1 to the max value of a 32 bit integer it overflows.
+The integer y would become -2,147,483,648 after adding 1 to y.
+This stops the for loop because of the condition that y must be greater than 0. 
+Cppcheck did not account for this bug which could be potentially disastrous to anyone's code.
+Using the visual studio static debugger [PVS-Studio](http://www.viva64.com/en/pvs-studio/) could help here. 
