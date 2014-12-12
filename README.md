@@ -403,4 +403,37 @@ Checking badcode.cpp...
 ```
 ####Why?
 The memory leak occurs when pointer 'a' goes out of scope.
-..
+Bugs that cppcheck does not find
+====================================
+##Unused function return value
+```
+#include<iostream>
+using namespace std;
+int TestReturn(int &x, int &y)
+{
+    x = 10;
+    y = 20;
+    return x * y;
+}
+
+int main()
+{
+    int a = 4
+    int b = 2
+    cout << b << " " << a << endl;
+    TestReturn(a,b);
+    cout << b << " " << a << endl;
+}
+cppcheck returns:
+```
+<<<<<<< HEAD
+$ cppcheck Sneakycode.cpp
+Checking Sneakycode.cpp...
+$
+```
+####Why didn't it catch the bug?
+So far cppcheck does not check for these stylistic bugs. If you run this code the variables a and b change but what happens to the return statement in the TestReturn function? 
+The return statement is essentially useless as it is discarded. This is what we call an used function return value.
+Cppcheck does not find these bugs because it's a stylistic issue. If we wanted to make a function that just changed the variable names, we would've just used a void function. 
+Cppcheck focuses on the bugs that matter and not stylistic issues. Using another static debugger would be useful here.
+
