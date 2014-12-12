@@ -8,15 +8,14 @@ are using.
 
 Quick Info
 ==========
-Cppcheck is a static code analysis tool for the C/C++ programming 
-languages. It is a versatile tool that can check non-standard code. The 
-creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and 
+Cppcheck is a static code analysis tool for the C/C++ programming languages. 
+It is a versatile tool that can check non-standard code. 
+The creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and 
 many other analysis tools it does not detect syntax errors in the code. 
-Cppcheck primarily detects the types of bugs that the compilers normally do
-not detect. 
+Cppcheck primarily detects the types of bugs that the compilers normally do not detect. 
 The goal is to detect only real errors in the code. 
 
-Cppcheck is free software under the GNU General Public License.
+Cppcheck is free software under the GPL http://www.gnu.org/copyleft/gpl.html .
 
 
 HOW TO INSTALL
@@ -40,6 +39,7 @@ Mac:
 
 
 Optional arguments
+You can find all the optional arguments here: http://linux.die.net/man/1/cppcheck.
 ====================
 
 --append=\<file\>
@@ -174,6 +174,7 @@ prompt.
 The returned error from cppcheck is as follows:
 
 ```
+$ cppcheck badcode.cpp
 Checking badcode.cpp...
 [badcode.cpp:10]: (error) Array 'a[10]' accessed at index 10, which is out of bounds.
 ```
@@ -201,10 +202,10 @@ processing a directory of files.
 ##Using cppcheck With Other Programs
 
 cppcheck can be configured to work with a number of development tools and is included in tools such as:
-* Code::Blocks
-* CodeDX
-* CodeLite
-* CppDepend 5
+* Code::Blocks : http://www.codeblocks.org/downloads
+* CodeDX: http://codedx.com/
+* CodeLite: http://codelite.org/support.php
+* CppDepend 5: http://www.cppdepend.com/
 
 and can be installed as a package in tools such as:
 * Eclipse ([Cppcheclipse](http://cppcheclipse.googlecode.com/))
@@ -212,6 +213,7 @@ and can be installed as a package in tools such as:
 * Hudsons ([plugin](http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin))
 * Jenkins ([plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin))
 * Visual Studios ([plugin](https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest))
+* Vim ([plugin](http://www.vim.org/scripts/script.php?script_id=3017))
 
 the above are not the only programs with cppcheck integration but only a small portion.
 
