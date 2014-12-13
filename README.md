@@ -205,18 +205,18 @@ the end user can customize the way the program functions in a number of ways suc
 ##Using cppcheck With Other Programs
 
 cppcheck can be configured to work with a number of development tools and is included in tools such as:
-* [Code::Blocks](http://www.codeblocks.org/downloads)
-* [CodeDX](http://codedx.com/)
-* [CodeLite](http://codelite.org/support.php)
-* [CppDepend 5](http://www.cppdepend.com/)
+* <a href="http://www.codeblocks.org/downloads" target="_blank">Code::Blocks</a>
+* <a href="http://codedx.com/" target="_blank">CodeDX</a>
+* <a href="http://codelite.org/support.php" target="_blank">CodeLite</a>
+* <a href="http://www.cppdepend.com/" target="_blank">CppDepend 5</a>
 
 and can be installed as a package in tools such as:
-* Eclipse ([Cppcheclipse](http://cppcheclipse.googlecode.com/))
-* gedit ([plugin](http://github.com/odamite/gedit-cppcheck))
-* Hudsons ([plugin](http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin))
-* Jenkins ([plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin))
-* Visual Studios ([plugin](https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest))
-* Vim ([plugin](http://www.vim.org/scripts/script.php?script_id=3017))
+* Eclipse (<a href="http://cppcheclipse.googlecode.com/" target="_blank">Cppcheclipse</a>)
+* gedit (<a href="http://github.com/odamite/gedit-cppcheck" target="_blank">plugin</a>)
+* Hudsons (<a href="http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin" target="_blank">plugin</a>)
+* Jenkins (<a href="http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin" target="_blank">plugin</a>)
+* Visual Studios (<a href="https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest" target="_blank">plugin</a>)
+* Vim (<a href="http://www.vim.org/scripts/script.php?script_id=3017" target="_blank">plugin</a>)
 
 the above are not the only programs with cppcheck integration but only a small portion.
 
@@ -480,6 +480,7 @@ The integer y would become -2,147,483,648 after adding 1 to y.
 This stops the for loop because of the condition that y must be greater than 0. 
 Cppcheck did not account for this bug which could be potentially disastrous to anyone's code.
 Using the visual studio static debugger [PVS-Studio](http://www.viva64.com/en/pvs-studio/) could help here. 
+
 ##Out of bounds on arrays in a function
 ```
 #include<iostream>
