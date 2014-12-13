@@ -205,18 +205,18 @@ the end user can customize the way the program functions in a number of ways suc
 ##Using cppcheck With Other Programs
 
 cppcheck can be configured to work with a number of development tools and is included in tools such as:
-* [Code::Blocks](http://www.codeblocks.org/downloads)
-* [CodeDX](http://codedx.com/)
-* [CodeLite](http://codelite.org/support.php)
-* [CppDepend 5](http://www.cppdepend.com/)
+* <a href="http://www.codeblocks.org/downloads" target="_blank">Code::Blocks</a>
+* <a href="http://codedx.com/" target="_blank">CodeDX</a>
+* <a href="http://codelite.org/support.php" target="_blank">CodeLite</a>
+* <a href="http://www.cppdepend.com/" target="_blank">CppDepend 5</a>
 
 and can be installed as a package in tools such as:
-* Eclipse ([Cppcheclipse](http://cppcheclipse.googlecode.com/))
-* gedit ([plugin](http://github.com/odamite/gedit-cppcheck))
-* Hudsons ([plugin](http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin))
-* Jenkins ([plugin](http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin))
-* Visual Studios ([plugin](https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest))
-* Vim ([plugin](http://www.vim.org/scripts/script.php?script_id=3017))
+* Eclipse (<a href="http://cppcheclipse.googlecode.com/" target="_blank">Cppcheclipse</a>)
+* gedit (<a href="http://github.com/odamite/gedit-cppcheck" target="_blank">plugin</a>)
+* Hudsons (<a href="http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin" target="_blank">plugin</a>)
+* Jenkins (<a href="http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin" target="_blank">plugin</a>)
+* Visual Studios (<a href="https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest" target="_blank">plugin</a>)
+* Vim (<a href="http://www.vim.org/scripts/script.php?script_id=3017" target="_blank">plugin</a>)
 
 the above are not the only programs with cppcheck integration but only a small portion.
 
@@ -375,7 +375,7 @@ $ cppcheck badcode.cpp
 Checking badcode.cpp...
 [badcode.cpp:29]: (error) Resource leak: f
 ```
-####Why?
+####Sheesh so many leaks in this code... why??
 You need to fclose the file that you have fopened earlier in the function, or otherwise you leak the resources allocated and pointed at by the FILE*.
 
 ##More Memory Leaks
@@ -403,8 +403,8 @@ $ cppcheck badcode.cpp
 Checking badcode.cpp...
 [badcode.cpp:14]: (error) Memory leak: a
 ```
-####Why?
-The memory leak occurs when pointer 'a' goes out of scope.
+####Why is there memory vegetable?!?
+The memory leek occurs when pointer 'a' goes out of scope.
 
 
 Bugs that cppcheck does not find
@@ -471,7 +471,7 @@ $ cppcheck overflow.cpp
 Checking overflow.cpp...
 $
 ```
-###Seems normal to me!
+####Seems normal to me!
 One other bug that cppcheck does not check for is overflow.
 If we run this code, it would only print out "Hello World!" once.
 Why does this happen?
@@ -480,6 +480,7 @@ The integer y would become -2,147,483,648 after adding 1 to y.
 This stops the for loop because of the condition that y must be greater than 0. 
 Cppcheck did not account for this bug which could be potentially disastrous to anyone's code.
 Using the visual studio static debugger [PVS-Studio](http://www.viva64.com/en/pvs-studio/) could help here. 
+
 ##Out of bounds on arrays in a function
 ```
 #include<iostream>
@@ -496,13 +497,14 @@ int main()
         f(100);
 }
 ```
+
 cppcheck returns:
 ```
 $ cppcheck TrickyArray.cpp
 Checking TrickyArray.cpp...
 $
 ```
-###But didn't you say it checked array bounds?
+####But didn't you say it checked array bounds?
 Yes, it does check array bounds ,but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
 Cppcheck checks the body of the code but does not evaluate the whole function with the argument included. Thus, it does not give us a message about it being out of bounds.
 Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.                       
