@@ -39,16 +39,7 @@ Mac:
 Optional arguments
 ==================
 
---append=\<file\>
-
-	This allows you to provide information about functions by providing an implementation for these.
-
--D\<id\>
-
-	By default Cppcheck checks all configurations.
-	Use -D to limit the checking.
-	When -D is used the checking is limited to the given configuration.
-	Example: -DDEBUG=1 -D__cplusplus
+Optional arguments are flags you can send to cppcheck to force it to check for certain things such as:
 
 --enable=\<id\>
 	Enable additional checks. The available ids are:
@@ -78,81 +69,7 @@ Optional arguments
 		Check for missing include statements.
 
 By default none of the additional checks are enabled.
-Several ids can be given if you separate them with commas, e.g. --enable=style,unusedFunction.
 
---error-exitcode=\<n\>
-
-	If errors are found, integer <n> is returned instead of default 0.
-	EXIT_FAILURE is returned if arguments are not valid or if no input files are provided.
-	Note that your operating system can modify this value, e.g. 256 can become 0.
-
---errorlist
-
-	Print a list of all possible error messages in XML format.
-
---exitcode-suppressions=\<file\>
-
-	Used when certain messages should be displayed but should not cause a non-zero exitcode.
-
---file-list=\<file\>
-
-	Specify the files to check in a text file.
-	One filename per line.
-
--f, --force
-
-	Force checking of files that have a lot of configurations.
-	Error is printed if such a file is found so there is no reason to use this by default.
-
--h, --help
-
-	Print help text.
-
---inline-suppr
-
-	Enable inline suppressions.
-	Use them by placing comments in the form: 
-	// cppcheck-suppress memleak before the line to suppress.
-
--q, --quiet
-
-	Only print something when there is an error.
-
---report-progress
-
-	Report progress when checking a file.
-
---rule=\<rule\>
-
-	Match regular expression to create your own checks.
-	E.g. rule "/ 0" can be used to check division by zero.
-
---rule-file=\<file\>
-
-	Use given rule XML file.
-	See https://sourceforge.net/projects/cppcheck/files/Articles/ for more info about the syntax.
-
-
---suppress=\<spec\>
-
-	Suppress a specific warning.
-	The format of <spec> is: [error id]:[filename]:[line].
-	The [filename] and [line] are optional.
-	[error id] may be * to suppress all warnings (for a specified file or files).
-	[filename] may contain the wildcard characters * or ?.
-
---suppressions-list=\<file\>
-
-	Suppress warnings listed in an included file.
-	Each suppression is in the format of <spec> above.
-
--v, --verbose
-
-	More detailed error reports
-
---xml
-
-	Write results in XML to error stream
 
 **Note: _You can find all the optional arguments [here](http://linux.die.net/man/1/cppcheck)._**
 
@@ -160,7 +77,7 @@ Several ids can be given if you separate them with commas, e.g. --enable=style,u
 How To Use cppcheck
 ===================
 
-There are more code examples provided in the example files.
+Alright, enough introductions lets get to what you are really interested in; how do you actually use this debugger?
 
 <a name="outofbounds"></a>
 ```
@@ -233,18 +150,7 @@ What cppcheck can and can't do
 * invalid usage of STL
 * usage of [uninitialized variables](#randomvariable) and [unused functions](#uselessfunction)
 
-##Limits of cppcheck
 
-Some limits of cppcheck include user ignorance and lack of knowledge.
-Ok, joking aside, the use of cppcheck is to limit the amount of false positive errors given by other compilers and checkers.
-What this means is with general usage, cppcheck will not check much but what it does check, it checks extremely well.
-Similar to a crafting NPC in a game, cppcheck will tell you only what it can tell you for sure.
-Given the right ingredients, or in cppcheck's case, configurations and flags, it will give you errors that are almost guaranteed to be errors.
-
-cppcheck works in a way where it trues to avoid false positives so many of the bugs listed will be actual bugs.
-this being said, there will be many things that cppcheck will not catch such as [stylistic errors](#styleuse), syntax, and [runtime](#overflowing) bugs.
-
-*tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug your programs.*
 
 
 cppcheck Examples
@@ -507,5 +413,19 @@ $
 ####But didn't you say it checked array bounds?
 Yes, it does check array bounds ,but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
 Cppcheck checks the body of the code but does not evaluate the whole function with the argument included. Thus, it does not give us a message about it being out of bounds.
-Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.                       
+Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.         
+
+
+##Limits of cppcheck
+
+Some limits of cppcheck include user ignorance and lack of knowledge.
+Ok, joking aside, the use of cppcheck is to limit the amount of false positive errors given by other compilers and checkers.
+What this means is with general usage, cppcheck will not check much but what it does check, it checks extremely well.
+Similar to a crafting NPC in a game, cppcheck will tell you only what it can tell you for sure.
+Given the right ingredients, or in cppcheck's case, configurations and flags, it will give you errors that are almost guaranteed to be errors.
+
+cppcheck works in a way where it trues to avoid false positives so many of the bugs listed will be actual bugs.
+this being said, there will be many things that cppcheck will not catch such as [stylistic errors](#styleuse), syntax, and [runtime](#overflowing) bugs.
+
+*tl;dr: cppcheck is good at what it does, but use a variety of tools to fully debug your programs.*              
 
