@@ -480,3 +480,30 @@ The integer y would become -2,147,483,648 after adding 1 to y.
 This stops the for loop because of the condition that y must be greater than 0. 
 Cppcheck did not account for this bug which could be potentially disastrous to anyone's code.
 Using the visual studio static debugger [PVS-Studio](http://www.viva64.com/en/pvs-studio/) could help here. 
+##Out of bounds on array's in a function
+```
+#include<iostream>
+using namespace std;
+void f(char c)
+{
+        char *p = new char[10];
+        p[c] = 42;
+ 
+        delete []p;
+}
+int main()
+{
+        f(100);
+}
+```
+cppcheck returns:
+```
+$ cppcheck TrickyArray.cpp
+Checking TrickyArray.cpp...
+$
+```
+###But didn't you say it checked array bounds?
+Yes, it does check array bounds ,but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
+Cppcheck checks the body of the code but does not evaluate the whole function with the argument included. Thus, it does not give us a message about it being out of bounds.
+Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.                       
+
