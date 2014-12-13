@@ -480,7 +480,7 @@ The integer y would become -2,147,483,648 after adding 1 to y.
 This stops the for loop because of the condition that y must be greater than 0. 
 Cppcheck did not account for this bug which could be potentially disastrous to anyone's code.
 Using the visual studio static debugger [PVS-Studio](http://www.viva64.com/en/pvs-studio/) could help here. 
-##Out of bounds on array's in a function
+##Out of bounds on arrays in a function
 ```
 #include<iostream>
 using namespace std;
