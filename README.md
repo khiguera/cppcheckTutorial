@@ -375,7 +375,7 @@ $ cppcheck badcode.cpp
 Checking badcode.cpp...
 [badcode.cpp:29]: (error) Resource leak: f
 ```
-####Why?
+####Sheesh so many leaks in this code... why??
 You need to fclose the file that you have fopened earlier in the function, or otherwise you leak the resources allocated and pointed at by the FILE*.
 
 ##More Memory Leaks
@@ -403,8 +403,8 @@ $ cppcheck badcode.cpp
 Checking badcode.cpp...
 [badcode.cpp:14]: (error) Memory leak: a
 ```
-####Why?
-The memory leak occurs when pointer 'a' goes out of scope.
+####Why is there memory vegetable?!?
+The memory leek occurs when pointer 'a' goes out of scope.
 
 
 Bugs that cppcheck does not find
@@ -471,7 +471,7 @@ $ cppcheck overflow.cpp
 Checking overflow.cpp...
 $
 ```
-###Seems normal to me!
+####Seems normal to me!
 One other bug that cppcheck does not check for is overflow.
 If we run this code, it would only print out "Hello World!" once.
 Why does this happen?
@@ -497,13 +497,14 @@ int main()
         f(100);
 }
 ```
+
 cppcheck returns:
 ```
 $ cppcheck TrickyArray.cpp
 Checking TrickyArray.cpp...
 $
 ```
-###But didn't you say it checked array bounds?
+####But didn't you say it checked array bounds?
 Yes, it does check array bounds ,but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
 Cppcheck checks the body of the code but does not evaluate the whole function with the argument included. Thus, it does not give us a message about it being out of bounds.
 Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.                       
