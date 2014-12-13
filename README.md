@@ -19,21 +19,7 @@ Cppcheck is free software under the GPL http://www.gnu.org/copyleft/gpl.html .
 HOW TO INSTALL
 ==================
 
-Windows: 
-	In order to install for Windows, it must be downloaded from their website which can be found at http://cppcheck.sourceforge.net/
-	After downloading, run the .msi file and it should install automatically.
-
-Linux:
-	In order to install for Linux you can simply run the following command:
-
-```
-sudo apt-get install cppcheck
-```
-
-Mac:
-	We were not able to figure out how to install onto Mac.
-	We would recommend to either ssh into a server that can use it or to explore the wonders that is the internet and figure it out.
-	If you do, you are more than welcome to contriubte that to this project.
+A download can be found at http://sourceforge.net/projects/cppcheck/
 
 
 Optional arguments
