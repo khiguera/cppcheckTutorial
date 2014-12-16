@@ -8,18 +8,18 @@ This tutorial was written mainly for Linux users as that is what we are using.
 Quick Info
 ==========
 
-Cppcheck is a static code analysis tool for the C/C++ programming languages. It is a versatile tool that can check non-standard code. 
+<a href="http://cppcheck.sourceforge.net/" target="_blank">Cppcheck</a> is a static code analysis tool for the C/C++ programming languages. It is a versatile tool that can check non-standard code. 
 The creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and many other analysis tools it does not detect syntax errors in the code. 
 Cppcheck primarily detects the types of bugs that the compilers normally do not detect. 
 The goal is to detect only real errors in the code. 
 
-Cppcheck is free software under the GPL http://www.gnu.org/copyleft/gpl.html .
+Cppcheck is free software under the <a href=" http://www.gnu.org/copyleft/gpl.html" target="_blank">GPL</a>.
 
 
 HOW TO INSTALL
 ==================
 
-A download can be found at http://sourceforge.net/projects/cppcheck/
+A download can be found <a href="http://sourceforge.net/projects/cppcheck/" target="_blank">here</a>.
 
 
 Optional arguments
@@ -66,6 +66,10 @@ How To Use cppcheck
 Alright, enough introductions lets get to what you are really interested in; how do you actually use this debugger?
 
 <a name="outofbounds"></a>
+In the code below, the user initializes a char array of size 10 and then assigns 0 to slot #10.
+This seems ok at first glance, however the user forgot that by declaring an array of size 10, the array indicies go from 0 to 9.
+What this means is that in the code line `a[10] = 0;` the `[10]` would go out of bounds.
+
 ```
 int main()
 {
@@ -76,10 +80,7 @@ int main()
 }
 ```
 
-In the above code, the glaring error is the out of bounds assignment into the char array a.
-Now to compile with nothing but the basic cppcheck commands, `cppcheck <filename>` is called in the command line prompt.
-
-The returned error from cppcheck is as follows:
+By running the command: `cppcheck badcode.cpp` the user is given the following:
 
 ```
 $ cppcheck badcode.cpp
@@ -157,10 +158,10 @@ int foo(int x)
 
 cppcheck returns:
 ```
-$ cppcheck --enable=style badcode.cpp
-Checking badcode.cpp...
-[badcode.cpp:9]: (style) The scope of the variable 'i' can be reduced.
-[badcode.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
+$ cppcheck --enable=style unusedvar.cpp
+Checking unusedvar.cpp...
+[unusedvar.cpp:9]: (style) The scope of the variable 'i' can be reduced.
+[unusedvar.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
 ```
 ####Why?
 In this example, we see some stylistic problems with this code. 
@@ -198,16 +199,16 @@ int main()
 
 cppcheck returns:
 ```
-$ cppcheck --enable=all badcode.cpp
-Checking badcode.cpp...
-[badcode.cpp:9]: (style) The scope of the variable 'i' can be reduced.
-[badcode.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
-[badcode.cpp:24]: (style) Variable 'a' is assigned a value that is never used.
+$ cppcheck --enable=all useless.cpp
+Checking useless.cpp...
+[useless.cpp:9]: (style) The scope of the variable 'i' can be reduced.
+[useless.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
+[useless.cpp:24]: (style) Variable 'a' is assigned a value that is never used.
 Checking usage of global functions..
-[badcode.cpp:7]: (style) The function 'greaterThanZero' is never used.
+[useless.cpp:7]: (style) The function 'greaterThanZero' is never used.
 ```
 ####Why?
-Because you derped and wrote a function when it wasn't even needed. Sheesh what a waste of time.
+Because you wrote a function when it wasn't even needed. Sheesh what a waste of time.
 Ok, fine here we added the main function.
 We still get the same as errors for not using variables i, but now we also get errors for an unused function `greaterThanZero`.
 _l2Code_
@@ -215,60 +216,15 @@ _l2Code_
 <a name="memoryhole"></a>
 ##Memory Leaks
 ```
-#include <iostream>
-#include <stdlib.h>
-#include <iostd.h>
-
-using namespace std;
-
-enum bus_type
-{
-	MEDIA_BUS_UNKNOWN,
-	MEDIA_BUS_VIRTUAL,
-	MEDIA_BUS_PCI,
-	MEDIA_BUS_USB,
-};
-
-static enum bus_type get_bus(char *device)
-{
-	char file[PATH_MAX];
-	char s[1024];
-	FILE *f;
-
-	if (!strcmp(device, "/sys/devices/virtual"))
-		return MEDIA_BUS_VIRTUAL;
-
-	snprintf(file, PATH_MAX, "%s/modalias", device);
-	f = fopen(file, "r");
-	if (!f)
-		return MEDIA_BUS_UNKNOWN;
-	if (!fgets(s, sizeof(s), f))       /* <-- (error) Resource leak: f */
-		return MEDIA_BUS_UNKNOWN;
-	fclose(f);
-
-	if (!strncmp(s, "pci", 3))
-		return MEDIA_BUS_PCI;
-	if (!strncmp(s, "usb", 3))
-		return MEDIA_BUS_USB;
-
-	return MEDIA_BUS_UNKNOWN;
-}
-
-int main()
-{
-	return 0;
-}
-
+~memory leak code~
 ```
 
 cppcheck returns:
 ```
-$ cppcheck badcode.cpp
-Checking badcode.cpp...
-[badcode.cpp:29]: (error) Resource leak: f
+~return value~
 ```
 ####Sheesh so many leaks in this code... why??
-You need to fclose the file that you have fopened earlier in the function, or otherwise you leak the resources allocated and pointed at by the FILE*.
+~Insert Explanation here~
 
 ##More Memory Leaks
 ```
@@ -291,9 +247,9 @@ int main(void)
 
 cppcheck returns:
 ```
-$ cppcheck badcode.cpp
-Checking badcode.cpp...
-[badcode.cpp:14]: (error) Memory leak: a
+$ cppcheck leaky.cpp
+Checking leaky.cpp...
+[leaky.cpp:14]: (error) Memory leak: a
 ```
 ####Why is there memory vegetable?!?
 The memory leek occurs when pointer 'a' goes out of scope.
