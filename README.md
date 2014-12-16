@@ -299,7 +299,7 @@ Cppcheck checks the body of the code but does not evaluate the whole function wi
 Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.         
 
 
-**Note: _You can find all the optional arguments that can be used at [here](http://linux.die.net/man/1/cppcheck)._**
+**Note: _You can find all the optional arguments that can be used [here](http://linux.die.net/man/1/cppcheck)._**
 
 
 ##Limits of cppcheck
