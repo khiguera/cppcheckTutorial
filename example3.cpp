@@ -1,3 +1,7 @@
+/*Here we added the main function. We still get the same as errors for not 
+using variables i, but now we get errors for an unused function 
+`greaterThanZero`. We found this using the command `cppcheck 
+--enable=all example3.cpp`.*/
 #include <iostream>
 
 void greaterThanZero(int x)
@@ -23,8 +27,4 @@ int main()
 	return 0;
 }
 
-/*Here we added the main function. We still get the same as errors for not 
-using variables i, but now we get errors for an unused function 
-`greaterThanZero`. We found this using the command `cppcheck 
---enable=all example3.cpp`.*/
 

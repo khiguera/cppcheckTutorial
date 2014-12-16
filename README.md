@@ -1,8 +1,7 @@
 cppcheckTutorial
 ================
 
-As a heads up, if you are here trying to figure out how to use this tool for Windows, we can not be sure that everything discussed will work.
-This tutorial was written mainly for Linux users as that is what we are using.
+As a fair warning to readers, this tutorial was written with Linux users in mind.
 
 
 Quick Info
@@ -21,43 +20,20 @@ HOW TO INSTALL
 
 A download can be found <a href="http://sourceforge.net/projects/cppcheck/" target="_blank">here</a>.
 
+What cppcheck can and can't do
+=============================
+##Capabilites of cppcheck
 
-Optional arguments
-==================
-
-Optional arguments are flags you can send to cppcheck to force it to check for certain things such as:
-
---enable=\<id\>
-	Enable additional checks. The available ids are:
-
-	all
-
-		Enable all checks
-
-	style
-
-		Check coding style
-		
-	information
-
-		Enable information messages
-
-	unusedFunction
-
-		Check for unused functions. 
-		(This is pretty useful to clean up the source code.
-		These funcitons may cause little gremlins later when trying to debug. 
-		From experience, I have tried to fix bugs but tried fixing it by making changes to a function that is no longer been used.
-		Three hours later, it was finally pointed out to me what I was doing...).
-	
-	missingInclude
-
-		Check for missing include statements.
-
-By default none of the additional checks are enabled.
+* out of bounds error check as seen [above](#outofbounds)
+* class code checks
+* code exception checking
+* [memory leak checking](#memoryhole) to a certain extent
+* obselete function usage warning
+* invalid usage of STL
+* usage of [uninitialized variables](#randomvariable) and [unused functions](#uselessfunction)
 
 
-**Note: _You can find all the optional arguments [here](http://linux.die.net/man/1/cppcheck)._**
+
 
 
 How To Use cppcheck
@@ -90,53 +66,6 @@ Checking badcode.cpp...
 
 Simply what this error states is that there is an assignment accessed at an out of bounds index.
 This is just one method of using cppcheck to check your code for errors the compiler will not check at compile time.
-
-Given the specific flags such as the `--enable=<id>` flag, you can test your code for a larger variety of errors.
-
-Users should also configure cppcheck before diving into the program so that the checker will check the things the user wants it to check. 
-
-Given the configuration and usage syntax of:
-```
-cppcheck [--append=<file>] [-D<id>] [--enable=<id>] [--error-exitcode=<n>] [--errorlist]
-[--exitcode-suppressions=<file>] [--file-list=<file>] [--force] [--help] [-I<dir>] [-i<dir>] [--inline-suppr]
-[-j<jobs>] [--quiet] [--report-progress] [--rule=<rule>] [--rule-file=<file>] [--style] [--suppress=<spec>]
-[--suppressions-list=<file>] [--template '<text>'] [--verbose] [--version] [--xml] [--xml-version=<version>]]
-[file or path] ...
-```
-the end user can customize the way the program functions in a number of ways such as error suppression or batch processing a directory of files.
-
-
-##Using cppcheck With Other Programs
-
-cppcheck can be configured to work with a number of development tools and is included in tools such as:
-* <a href="http://www.codeblocks.org/downloads" target="_blank">Code::Blocks</a>
-* <a href="http://codedx.com/" target="_blank">CodeDX</a>
-* <a href="http://codelite.org/support.php" target="_blank">CodeLite</a>
-* <a href="http://www.cppdepend.com/" target="_blank">CppDepend 5</a>
-
-and can be installed as a package in tools such as:
-* Eclipse (<a href="http://cppcheclipse.googlecode.com/" target="_blank">Cppcheclipse</a>)
-* gedit (<a href="http://github.com/odamite/gedit-cppcheck" target="_blank">plugin</a>)
-* Hudsons (<a href="http://wiki.hudson-ci.org/display/HUDSON/Cppcheck+Plugin" target="_blank">plugin</a>)
-* Jenkins (<a href="http://wiki.jenkins-ci.org/display/JENKINS/Cppcheck+Plugin" target="_blank">plugin</a>)
-* Visual Studios (<a href="https://github.com/VioletGiraffe/cppcheck-vs-addin/releases/latest" target="_blank">plugin</a>)
-* Vim (<a href="http://www.vim.org/scripts/script.php?script_id=3017" target="_blank">plugin</a>)
-
-the above are not the only programs with cppcheck integration but only a small portion.
-
-
-What cppcheck can and can't do
-=============================
-##Capabilites of cppcheck
-
-* out of bounds error check as seen [above](#outofbounds)
-* class code checks
-* code exception checking
-* [memory leak checking](#memoryhole) to a certain extent
-* obselete function usage warning
-* invalid usage of STL
-* usage of [uninitialized variables](#randomvariable) and [unused functions](#uselessfunction)
-
 
 
 
@@ -368,6 +297,9 @@ $
 Yes, it does check array bounds ,but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
 Cppcheck checks the body of the code but does not evaluate the whole function with the argument included. Thus, it does not give us a message about it being out of bounds.
 Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.         
+
+
+**Note: _You can find all the optional arguments that can be used at [here](http://linux.die.net/man/1/cppcheck)._**
 
 
 ##Limits of cppcheck
