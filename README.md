@@ -216,32 +216,44 @@ _l2Code_
 <a name="memoryhole"></a>
 ##Memory Leaks
 ```
-~memory leak code~
+int main()
+{
+	int *a;
+	a = new int[10];
+}
 ```
 
 cppcheck returns:
 ```
-~return value~
+$ cppcheck memleak.cpp
+Checking memleak.cpp...
+[memleak.cpp:11]: (error) Memory leak: a
 ```
-####Sheesh so many leaks in this code... why??
-~Insert Explanation here~
+####Sheesh a leak in this code... why??
+Since the code allocated memory of 10 for a, there should have been followup code at the end calling `delete []a;`.
+However since this was not done, a memory leak occurs where dynamically allocated memory was never freed.
+Ideally the code should look like the following:
+```
+int main()
+{
+	int *a;
+	a = new int[10];
+
+	delete []a;
+}
+```
+This code will result in the `[memleak.cpp:11]: (error) Memory leak: a` error being cleared.
 
 ##More Memory Leaks
 ```
-void function_which_allocates(void)
+void leakseverywhere(void)
 {
-	/* allocate an array of 45 floats */
 	float *a = malloc(sizeof(float) * 45);
-	     
-	/* additional code making use of 'a' */
-	     
-	/* return to main, having forgotten to free the memory we malloc'd */
 }
  
 int main(void)
 {
-	function_which_allocates();
-	/* the pointer 'a' no longer exists, and therefore cannot be freed, but the memory is still allocated. a leak has occurred. */
+	leakseverywhere();
 }
 ```
 
