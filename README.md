@@ -24,7 +24,7 @@ What cppcheck can and can't do
 =============================
 ##Capabilites of cppcheck
 
-* out of bounds error check as seen [above](#outofbounds)
+* out of bounds error check as seen [below](#outofbounds)
 * class code checks
 * code exception checking
 * [memory leak checking](#memoryhole) to a certain extent
