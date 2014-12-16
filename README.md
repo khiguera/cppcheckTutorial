@@ -12,7 +12,7 @@ The creator and lead developer is Daniel Marjamäki. Unlike C/C++ compilers and 
 Cppcheck primarily detects the types of bugs that the compilers normally do not detect. 
 The goal is to detect only real errors in the code. 
 
-Cppcheck is free software under the <a href=" http://www.gnu.org/copyleft/gpl.html" target="_blank">GPL</a>.
+Cppcheck is free software under the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GPL</a>.
 
 
 HOW TO INSTALL
@@ -71,6 +71,7 @@ This is just one method of using cppcheck to check your code for errors the comp
 
 cppcheck Examples
 =================
+
 <a name="randomvariable"></a>
 ##Useless/Unused Variable Checking
 ```
@@ -120,7 +121,7 @@ int foo(int x, int y)
 int main()
 {
 	int a = 1, b = 2;
-	foo(,b);
+	foo(a,b);
 
 	return 0;
 }
@@ -268,7 +269,7 @@ It's because when you add 1 to the max value of a 32 bit integer it overflows.
 The integer y would become -2,147,483,648 after adding 1 to y.
 This stops the for loop because of the condition that y must be greater than 0. 
 Cppcheck did not account for this bug which could be potentially disastrous to anyone's code.
-Using the visual studio static debugger [PVS-Studio](http://www.viva64.com/en/pvs-studio/) could help here. 
+Using the visual studio static debugger <a href="http://www.viva64.com/en/pvs-studio/" target="_blank">PVS-Studio</a> could help here. 
 
 ##Out of bounds on arrays in a function
 ```
