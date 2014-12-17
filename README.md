@@ -78,7 +78,7 @@ cppcheck Examples
 int foo(int x)
 {
 	int i;
-	if(x > 0 )
+	if(x > 0)
 	{
 		std::cout << "X is greater than 0." << std::endl;
 		i = 1;
@@ -120,8 +120,10 @@ int foo(int x, int y)
 
 int main()
 {
-	int a = 1, b = 2;
-	foo(a,b);
+	int a = 1
+	int b = 2;
+	int c = 3
+	foo(a,c);
 
 	return 0;
 }
@@ -133,15 +135,18 @@ $ cppcheck --enable=all useless.cpp
 Checking useless.cpp...
 [useless.cpp:9]: (style) The scope of the variable 'i' can be reduced.
 [useless.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
-[useless.cpp:24]: (style) Variable 'a' is assigned a value that is never used.
+[useless.cpp:24]: (style) Variable 'b' is assigned a value that is never used.
 Checking usage of global functions..
 [useless.cpp:7]: (style) The function 'greaterThanZero' is never used.
 ```
 ####Why?
 Because you wrote a function when it wasn't even needed. Sheesh what a waste of time.
-Ok, fine here we added the main function.
-We still get the same as errors for not using variables i, but now we also get errors for an unused function `greaterThanZero`.
+Ok, fine heres what this code is and does. We added the main function and we still get the same as errors for not using variables i, but now we also get errors for an unused function `greaterThanZero`.
 _l2Code_
+To fix the problems listed above in the cppcheck report would be to remove the unused function and to remove the variables that were not used.
+What we will be left with will be the `main()` function and the `foo(int x, int y)` function.
+By removing the `greaterThanZero(int x)` function, we fix the errors stating how `Variable 'i' is assigned a value that is never used` and `The function 'greaterThanZero' is never used`.
+
 
 <a name="memoryhole"></a>
 ##Memory Leaks
@@ -194,10 +199,23 @@ Checking leaky.cpp...
 [leaky.cpp:14]: (error) Memory leak: a
 ```
 ####Why is there memory vegetable?!?
-The memory leek occurs when pointer 'a' goes out of scope.
+Aside from using bad coding practices like using `malloc` instead of `a = new float[somenumber]`, this code is similar to the one prior to this.
+By not using the `free` call to free the allocated memory, the leak will occur when the pointer called "a" goes out of scope.
+Ideally the code should looks something like this:
+```
+void leakseverywhere(void)
+{
+	float *a = malloc(sizeof(float) * 45);
+	free(a);
+}
 
-
-
+int main(void)
+{
+	leakseverywhere();
+}
+```
+By calling `free(a);` the program will free the allocated memory.
+This works similarily to the c++ call of `delete []a;`.
 
 
 Bugs that cppcheck does not find
@@ -307,7 +325,7 @@ Checking TrickyArray.cpp...
 $
 ```
 ####But didn't you say it checked array bounds?
-Yes, it does check array bounds ,but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
+Yes, it does check array bounds, but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
 Cppcheck checks the body of the code but does not evaluate the whole function with the argument included. Thus, it does not give us a message about it being out of bounds.
 Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.         
 
