@@ -339,7 +339,39 @@ An Example of a Cppcheck Feature
 ==================================
 
 ####Inline Suppression
-There is an example on how to use inline suppression included in the example source code.
+One way to prevent a certain error is by using inline suppression.
+By following the format of `// cppcheck-suppress <ERROR:ID>`, cppcheck will recognize this, and will not print out the error.
+To turn on inline suppression, run the command `cppcheck --inline-suppr <FILENAME>`.
+One can also suppress the error in the command line in the format of `cppcheck --suppress=<ERROR:ID> <FILENAME>`.
+
+If you don't know what the error is called when you want to suppress it, you can run the command `cppcheck --xml <FILENAME>`.
+Look for "error id = <ERROR>" for the id of the error.
+Following the same format as the example, you can suppress that specific error.
+
+The following is an example on the usage of inline suppression:
+```
+int foo()
+{
+	char arr[10];
+	// cppcheck-suppress arrayIndexOutOfBounds	
+	arr[15] = 1;
+
+}
+```
+Looking at the first example of an array index going out of bounds, this is the same situation.
+
+####Now why would you even do this?!
+This allows you to focus on targeted errors that you are looking for.
+Perhaps you already know the error is there, but because you will use it (in the event of the `unused variable` error), there is no need to fix the error.
+It will also help keep the noise down when debugging the code.
+So now instead of running `cppcheck <FILENAME>`, you would run `cppcheck --inline-suppr <FILENAME>`.
+
+This will looks something like this:
+```
+$ cppcheck --inline-suppr inlinesupp.cpp 
+Checking inlinesupp.cpp...
+$
+```
 
 
 **Note: _You can find all the optional arguments that can be used [here](http://linux.die.net/man/1/cppcheck)._**
