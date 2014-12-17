@@ -62,6 +62,7 @@ By running the command: `cppcheck badcode.cpp` the user is given the following:
 $ cppcheck badcode.cpp
 Checking badcode.cpp...
 [badcode.cpp:10]: (error) Array 'a[10]' accessed at index 10, which is out of bounds.
+$
 ```
 
 Simply what this error states is that there is an assignment accessed at an out of bounds index.
@@ -92,6 +93,7 @@ $ cppcheck --enable=style unusedvar.cpp
 Checking unusedvar.cpp...
 [unusedvar.cpp:9]: (style) The scope of the variable 'i' can be reduced.
 [unusedvar.cpp:13]: (style) Variable 'i' is assigned a value that is never used.
+$
 ```
 ####Why?
 In this example, we see some stylistic problems with this code. 
@@ -138,6 +140,7 @@ Checking useless.cpp...
 [useless.cpp:24]: (style) Variable 'b' is assigned a value that is never used.
 Checking usage of global functions..
 [useless.cpp:7]: (style) The function 'greaterThanZero' is never used.
+$
 ```
 ####Why?
 Because you wrote a function when it wasn't even needed. Sheesh what a waste of time.
@@ -163,6 +166,7 @@ cppcheck returns:
 $ cppcheck memleak.cpp
 Checking memleak.cpp...
 [memleak.cpp:11]: (error) Memory leak: a
+$
 ```
 ####Sheesh a leak in this code... why??
 Since the code allocated memory of 10 for a, there should have been followup code at the end calling `delete []a;`.
@@ -197,6 +201,7 @@ cppcheck returns:
 $ cppcheck leaky.cpp
 Checking leaky.cpp...
 [leaky.cpp:14]: (error) Memory leak: a
+$
 ```
 ####Why is there memory vegetable?!?
 Aside from using bad coding practices like using `malloc` instead of `a = new float[somenumber]`, this code is similar to the one prior to this.
