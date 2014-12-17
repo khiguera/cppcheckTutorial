@@ -196,6 +196,9 @@ Checking leaky.cpp...
 The memory leek occurs when pointer 'a' goes out of scope.
 
 
+
+
+
 Bugs that cppcheck does not find
 ====================================
 <a name="styleuse"></a>
@@ -297,6 +300,13 @@ $
 Yes, it does check array bounds ,but not if its index is passed in through an argument. Currently, cppcheck does not check functions with respect of the parameter.
 Cppcheck checks the body of the code but does not evaluate the whole function with the argument included. Thus, it does not give us a message about it being out of bounds.
 Remember, one of the goals of cppcheck is to have little to no false positives. This is an example where cppcheck fails where other static debugger succeed.         
+
+
+An Example of a Cppcheck Feature
+==================================
+
+####Inline Suppression
+There is an example on how to use inline suppression included in the example source code.
 
 
 **Note: _You can find all the optional arguments that can be used [here](http://linux.die.net/man/1/cppcheck)._**
