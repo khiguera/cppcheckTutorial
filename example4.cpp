@@ -6,7 +6,7 @@ suppression, run the command `cppcheck --inline-suppr <FILENAME>`
 One can also suppress the error in the command line in the format of 
 `cppcheck --suppress=<ERROR:ID> <FILENAME>`*/
 
-/*If you don't know what the error is called when you want to surpress it, you can run the command `cppcheck --xml <FILENAME>` Look for "error id = <ERROR>" for the id of the error. Following the same format as the example, you can surpressthat specific error.*/
+/*If you don't know what the error is called when you want to surpress it, you can run the command `cppcheck --xml <FILENAME>` Look for "error id = <ERROR>" for the id of the error. Following the same format as the example, you can suppressthat specific error.*/
 
 int foo()
 {
@@ -17,4 +17,4 @@ int foo()
 }
 
 ###Why?
-This allows you to focus on targeted errors that you are looking for. Perhaps you already know the error is there, but because you will use it, there is no need to fix the error. It will help keep the noise down when debugging the code.
+This allows you to focus on targeted errors that you are looking for. Perhaps you already know the error is there, but because you will use it, there is no need to fix the error. It will also help keep the noise down when debugging the code.
