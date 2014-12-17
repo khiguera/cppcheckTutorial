@@ -362,11 +362,10 @@ Looking at the first example of an array index going out of bounds, this is the 
 
 ####Now why would you even do this?!
 This allows you to focus on targeted errors that you are looking for.
-Perhaps you already know the error is there, but because you will use it (in the event of the `unused variable` error), there is no need to fix the error.
-It will also help keep the noise down when debugging the code.
-So now instead of running `cppcheck <FILENAME>`, you would run `cppcheck --inline-suppr <FILENAME>`.
+Perhaps you already know the error is there but because you will use it (in the event of the `unused variable` error), there is no need to fix the error.
+This will also help keep the noise down when debugging the code.
 
-This will looks something like this:
+This inline suppression will look something like this:
 ```
 $ cppcheck --inline-suppr inlinesupp.cpp 
 Checking inlinesupp.cpp...
