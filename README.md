@@ -203,6 +203,8 @@ The memory leek occurs when pointer 'a' goes out of scope.
 Bugs that cppcheck does not find
 ====================================
 <a name="styleuse"></a>
+With beginner programmers, these kind of mistakes happen often. 
+The following code is a great example of a mistake that beginner programmers might make.
 ##Unused function return value
 ```
 #include<iostream>
@@ -234,16 +236,21 @@ $
 ```
 ####Why didn't it catch the bug?
 So far cppcheck does not check for these stylistic bugs.
-If you run this code the variables a and b change but what happens to the return statement in the TestReturn function? 
+If you run this code the variables a and b change but what happens 
+to the return statement in the TestReturn function? 
 The return statement is essentially useless as it is discarded.
 This is what we call an unused function return value.
 Cppcheck does not find these bugs because it's a stylistic issue.
-If we wanted to make a function that just changed the variable names, we would've just used a void function. 
+If we wanted to make a function that just changed the variable names, 
+we would've just used a void function. 
 Cppcheck focuses on the bugs that matter and not stylistic issues.
 Using another static debugger would be useful here.
 
 <a name="overflowing"></a>
 ##Overflow
+This example is to show the result of overflow. A majority of the students
+have probably made the mistake of subtracting a number from 0 in an unsigned integer variable.
+The following code shows what happens when you overlook the potential of overflowing.
 ```
 #include<iostream>
 using namespace std;
@@ -275,6 +282,8 @@ Cppcheck did not account for this bug which could be potentially disastrous to a
 Using the visual studio static debugger <a href="http://www.viva64.com/en/pvs-studio/" target="_blank">PVS-Studio</a> could help here. 
 
 ##Out of bounds on arrays in a function
+This example was made to show that cppcheck does not cover all out of bounds on arrays.
+The difference in this code from the earlier one is that the index is passed in through an argument of a function.
 ```
 #include<iostream>
 using namespace std;
